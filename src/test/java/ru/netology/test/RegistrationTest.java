@@ -4,17 +4,15 @@ import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Registration;
-
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static ru.netology.UserGenerator.*;
 import static com.codeborne.selenide.Condition.visible;
+import static ru.netology.UserGenerator.*;
 
 
 public class RegistrationTest {
-UserGenerator userGenerator = new UserGenerator();
 
     @BeforeEach
     void setUp() {

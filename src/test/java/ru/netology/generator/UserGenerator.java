@@ -10,11 +10,10 @@ import ru.netology.UserGenerator;
 import ru.netology.domain.Registration;
 
 import java.util.Locale;
-
 import static io.restassured.RestAssured.requestSpecification;
 
 public class UserGenerator {
-    private static RequestSpecification requestSpec = new RequestSpecBuilder()
+    private static RequestSpecification requestSpecification = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
             .setPort(9999)
             .setAccept(ContentType.JSON)
