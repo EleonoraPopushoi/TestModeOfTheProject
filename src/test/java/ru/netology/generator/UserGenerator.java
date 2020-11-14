@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.generator;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
@@ -6,11 +6,9 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import ru.netology.UserGenerator;
 import ru.netology.domain.Registration;
 
 import java.util.Locale;
-import static io.restassured.RestAssured.requestSpecification;
 
 public class UserGenerator {
     private static RequestSpecification requestSpecification = new RequestSpecBuilder()

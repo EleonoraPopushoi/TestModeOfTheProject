@@ -1,15 +1,16 @@
-package ru.netology;
+package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Registration;
+
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.visible;
-import static ru.netology.UserGenerator.*;
+import static ru.netology.generator.UserGenerator.*;
 
 
 public class RegistrationTest {
@@ -25,7 +26,7 @@ public class RegistrationTest {
         $("[name=login]").setValue(validActiveUser.getLogin());
         $("[name=password]").setValue(validActiveUser.getPassword());
         $(".button__text").click();
-        $(".App_appContainer__3jRx1 h2.heading").waitUntil(exist, 15000);
+        $(".App_appContainer__3jRx1 h2.heading").waitUntil(exist, 5000);
         $(".App_appContainer__3jRx1 h2.heading").shouldHave(matchesText("Личный кабинет"));
     }
 
@@ -37,7 +38,7 @@ public class RegistrationTest {
         $("[name=password]").setValue(validBlockedUser.getPassword());
         $(".button__text").click();
         $(".notification_status_error").waitUntil(visible, 15000);
-        $(".notification_visible[data-test-id=error-notification]").shouldHave(Condition.matchesText("Ошибка! Пользователь заблокирован"));
+        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Пользователь заблокирован"));
     }
 
     @Test
@@ -47,7 +48,7 @@ public class RegistrationTest {
         $("[name=password]").setValue(userWithIncorrectPassword.getPassword());
         $(".button__text").click();
         $(".notification_status_error").waitUntil(visible, 15000);
-        $(".notification_visible[data-test-id=error-notification]").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
     }
 
     @Test
@@ -57,7 +58,7 @@ public class RegistrationTest {
         $("[name=password]").setValue(userWithIncorrectLogin.getPassword());
         $(".button__text").click();
         $(".notification_status_error").waitUntil(visible, 15000);
-        $(".notification_visible[data-test-id=error-notification]").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
     }
 }
 
