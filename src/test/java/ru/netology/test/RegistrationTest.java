@@ -37,8 +37,7 @@ public class RegistrationTest {
         $("[name=login]").setValue(validBlockedUser.getLogin());
         $("[name=password]").setValue(validBlockedUser.getPassword());
         $(".button__text").click();
-        $(".notification_status_error").waitUntil(visible, 15000);
-        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Пользователь заблокирован"));
+        $("[data-test-id='error-notification'] .notification__content").waitUntil(visible, 15000).shouldHave(Condition.matchesText("Ошибка! Пользователь заблокирован"));
     }
 
     @Test
@@ -47,8 +46,7 @@ public class RegistrationTest {
         $("[name=login]").setValue(userWithIncorrectPassword.getLogin());
         $("[name=password]").setValue(userWithIncorrectPassword.getPassword());
         $(".button__text").click();
-        $(".notification_status_error").waitUntil(visible, 15000);
-        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").waitUntil(visible, 15000).shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
     }
 
     @Test
@@ -57,8 +55,7 @@ public class RegistrationTest {
         $("[name=login]").setValue(userWithIncorrectLogin.getLogin());
         $("[name=password]").setValue(userWithIncorrectLogin.getPassword());
         $(".button__text").click();
-        $(".notification_status_error").waitUntil(visible, 15000);
-        $("[data-test-id=error-notification] .notification_visible").shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] .notification__content").waitUntil(visible, 15000).shouldHave(Condition.matchesText("Ошибка! Неверно указан логин или пароль"));
     }
 }
 
